@@ -28,8 +28,7 @@ Stop "vibe coding" and start building with purpose. This system gives you 9 spec
 ### Installation (1 command)
 
 ```bash
-cd your-project
-git clone https://github.com/aidenestelle/AI-Development-Workflow-System.git .ai-workflow
+git clone https://github.com/aidenestelle/AI-Development-Workflow-System.git
 ```
 
 Done! Claude Code automatically discovers everything.
@@ -39,6 +38,11 @@ Done! Claude Code automatically discovers everything.
 ```bash
 # In Claude Code:
 /start
+```
+or 
+```bash
+# In Claude Code:
+/create
 ```
 
 Claude will:
@@ -247,7 +251,6 @@ MIT License - See [LICENSE](LICENSE) for details
 ## Support
 
 - **Issues:** [GitHub Issues](https://github.com/aidenestelle/AI-Development-Workflow-System/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/aidenestelle/AI-Development-Workflow-System/discussions)
 
 ---
 
@@ -265,82 +268,6 @@ git clone https://github.com/aidenestelle/AI-Development-Workflow-System.git .ai
 </div>
 
 ## Quick Start
-
-### Installation
-
-#### Option 1: Automated Installation (Recommended)
-
-```bash
-# Navigate to your project
-cd your-project
-
-# Clone and run installer
-git clone https://github.com/yourusername/ai-workflow-system .ai-workflow
-cd .ai-workflow
-chmod +x scripts/install.sh
-./scripts/install.sh
-
-# The installer will:
-# ✓ Create docs/ directory
-# ✓ Install all workflow documentation
-# ✓ Initialize TASKS.md, CONTEXT.md, HISTORY.md
-# ✓ Copy .clauderc configuration
-# ✓ Update .gitignore
-# ✓ Create quick reference guide
-```
-
-#### Option 2: Manual Installation
-
-```bash
-# Navigate to your project
-cd your-project
-
-# Clone the workflow system
-git clone https://github.com/yourusername/ai-workflow-system .ai-workflow
-
-# Create docs directory
-mkdir -p docs
-
-# Copy all documentation
-cp .ai-workflow/docs/AI_RULESET.md docs/
-cp .ai-workflow/docs/PLANNING_MODE.md docs/
-cp .ai-workflow/docs/CONTEXT_UPKEEP_GUIDELINES.md docs/
-cp .ai-workflow/docs/TASKS_GUIDELINES.md docs/
-cp .ai-workflow/docs/TESTING_GUIDELINES.md docs/
-
-# Initialize working files
-touch docs/TASKS.md docs/CONTEXT.md docs/HISTORY.md
-
-# Copy Claude Code configuration
-cp .ai-workflow/.clauderc .
-
-# Optional: Remove installation directory
-rm -rf .ai-workflow
-```
-
-#### Option 3: Git Submodule (For Updates)
-
-```bash
-# Add as submodule
-git submodule add https://github.com/yourusername/ai-workflow-system .ai-workflow
-
-# Create symlinks (documentation can be updated by pulling submodule)
-mkdir -p docs
-ln -s ../.ai-workflow/docs/AI_RULESET.md docs/
-ln -s ../.ai-workflow/docs/PLANNING_MODE.md docs/
-ln -s ../.ai-workflow/docs/CONTEXT_UPKEEP_GUIDELINES.md docs/
-ln -s ../.ai-workflow/docs/TASKS_GUIDELINES.md docs/
-ln -s ../.ai-workflow/docs/TESTING_GUIDELINES.md docs/
-
-# Initialize working files
-touch docs/TASKS.md docs/CONTEXT.md docs/HISTORY.md
-
-# Copy config
-cp .ai-workflow/.clauderc .
-
-# Update workflow system later
-git submodule update --remote
-```
 
 ### Usage
 
@@ -416,24 +343,6 @@ When using `/do-all`:
 8. Repeats until all tasks complete
 
 **Token efficiency**: Each agent uses only what they need, typically 20-150k depending on role.
-
-## File Structure
-
-Your project should have:
-```
-your-project/
-├── docs/
-│   ├── AI_RULESET.md           # Main workflow rules
-│   ├── PLANNING_MODE.md        # Anti-vibe-coding protocol
-│   ├── CONTEXT_UPKEEP_GUIDELINES.md  # Documentation standards
-│   ├── TASKS_GUIDELINES.md     # Task formatting rules
-│   ├── TESTING_GUIDELINES.md   # Testing standards
-│   ├── TASKS.md                # Active task list
-│   ├── CONTEXT.md              # Current cycle context
-│   └── HISTORY.md              # Completed work archive
-├── .ai-workflow/               # This repo (optional, can delete after setup)
-└── [your source code]
-```
 
 ## Key Rules
 
@@ -554,12 +463,31 @@ Contributions welcome! Please:
 
 ## License
 
-[Choose your license - MIT, Apache 2.0, etc.]
+MIT License
+
+Copyright (c) 2025 Aiden Estelle
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ## Support
 
 - Issues: [GitHub Issues](https://github.com/yourusername/ai-workflow-system/issues)
-- Discussions: [GitHub Discussions](https://github.com/yourusername/ai-workflow-system/discussions)
 
 ---
 

@@ -1,0 +1,73 @@
+{
+  "name": "AI Workflow System",
+  "version": "1.0.0",
+  "description": "Structured AI development workflow preventing vibe coding",
+  
+  "systemPrompt": "You are an AI assistant following a structured workflow system with specialized agents. ALWAYS read and follow docs/AI_RULESET.md before taking any action. Read docs/AGENTS.md to determine if you are the Orchestrator (coordinating) or a Specialist (implementing). When users report bugs or request features, enter Planning Mode by reading docs/PLANNING_MODE.md first. Use minimal, task-specific context as specified in AGENTS.md to stay within token budgets.",
+  
+  "contextFiles": [
+    "docs/AI_RULESET.md",
+    "docs/AGENTS.md",
+    "docs/PLANNING_MODE.md",
+    "docs/CONTEXT_UPKEEP_GUIDELINES.md",
+    "docs/TASKS.md",
+    "docs/CONTEXT.md"
+  ],
+  
+  "commands": {
+    "/create": {
+      "description": "Create tasks from a bug/feature list file",
+      "prompt": "Read ${1:file} containing bugs and features. Read docs/TASKS_GUIDELINES.md. Check if docs/TASKS.md has completed tasks. If all complete, summarize docs/TASKS.md and docs/CONTEXT.md to docs/HISTORY.md, then clear docs/TASKS.md. If unfinished tasks exist, create TASKS_mm-dd-yyyy-version-xxx.md instead. Add new tasks marked [NOT STARTED] with appropriate agent assignments."
+    },
+    
+    "/start": {
+      "description": "Start the first [NOT STARTED] task",
+      "prompt": "Read docs/TASKS.md. Find first [NOT STARTED] task. Update to [STARTED]. Complete ONLY that task and subtasks. Mark subtasks ✓/✗ progressively. When finished, update to [REVIEW]. Update docs/CONTEXT.md with complete details following CONTEXT_UPKEEP_GUIDELINES.md."
+    },
+    
+    "/continue": {
+      "description": "Continue the current [STARTED] task",
+      "prompt": "Read docs/TASKS.md. Find [STARTED] task. Read docs/CONTEXT.md for context. Complete that task and subtasks. Mark subtasks ✓/✗ progressively. When finished, update to [REVIEW]. Update docs/CONTEXT.md with complete details."
+    },
+    
+    "/finish": {
+      "description": "Test and complete [REVIEW] task",
+      "prompt": "Read docs/TASKS.md for [REVIEW] task. Read docs/CONTEXT.md and docs/TESTING_GUIDELINES.md. Test all changes. When tests pass (0 errors/warnings), git commit with descriptive message. Update task to [COMPLETED]."
+    },
+    
+    "/do-all": {
+      "description": "Orchestrate all tasks using sub-agents",
+      "prompt": "Enter Orchestration Mode. Read docs/TASKS.md. Loop: (1) Spawn Implementation Agent for /start, wait, compact chat. (2) Spawn Validation Agent for /finish, wait, compact chat. (3) Check queue, repeat until all [COMPLETED]. Follow orchestration protocol in AI_RULESET.md."
+    },
+    
+    "/plan": {
+      "description": "Enter Planning Mode for analysis",
+      "prompt": "Read docs/PLANNING_MODE.md. Enter Planning Mode. Gather information, analyze root cause, create detailed plan, get confirmation before proceeding."
+    }
+  },
+  
+  "rules": [
+    "ALWAYS read docs/AI_RULESET.md before taking action",
+    "ALWAYS read docs/AGENTS.md to determine your role (Orchestrator or Specialist)",
+    "ALWAYS enter Planning Mode (docs/PLANNING_MODE.md) when bugs/errors reported",
+    "ALWAYS load ONLY the context specified in AGENTS.md for your agent type",
+    "ALWAYS stay within token budget for your agent type (see AGENTS.md)",
+    "NEVER exceed 450 lines per file - create refactor task if needed",
+    "NEVER use 'any' or 'unknown' types",
+    "NEVER quick patch bugs - find root cause",
+    "ALWAYS update subtasks progressively with ✓/✗",
+    "ALWAYS use exact status requested in workflow",
+    "ALWAYS run build + lint before marking task complete",
+    "ALWAYS kill dev servers after work",
+    "ALWAYS use Supabase MCP for database operations",
+    "ALWAYS log token usage in CONTEXT.md for optimization"
+  ],
+  
+  "fileWatchers": [
+    {
+      "pattern": "docs/TASKS.md",
+      "action": "remind",
+      "message": "Task file modified. Ensure status changes follow AI_RULESET.md protocol."
+    }
+  ]
+}

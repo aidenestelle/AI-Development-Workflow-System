@@ -1,41 +1,112 @@
-# AI-Development-Workflow-System
+## File Structure
+
+Your project should have:
+```
+your-project/
+├── docs/
+│   ├── AI_RULESET.md           # Main workflow rules
+│   ├── AGENTS.md               # Specialized agent system
+│   ├── AGENT_PROMPTS.md        # Ready-to-use agent prompts
+│   ├── PLANNING_MODE.md        # Anti-vibe-coding protocol
+│   ├── CONTEXT_UPKEEP_GUIDELINES.md  # Documentation standards
+│   ├── TASKS_GUIDELINES.md     # Task formatting rules
+│   ├── TESTING_GUIDELINES.md   # Testing standards
+│   ├── TASKS.md                # Active task list
+│   ├── CONTEXT.md              # Current cycle context
+│   └── HISTORY.md              # Completed work archive
+├── .ai-workflow/               # This repo (optional, can delete after setup)
+└── [your source code]
+```# AI Development Workflow System
 
 A comprehensive, structured workflow system for AI-assisted development with Claude Code. Designed for ADHD/Autistic-friendly UX, preventing "vibe coding", and maintaining high code quality.
 
 ## Features
 
 - 🎯 **Planning-First Protocol** - No vibe coding, structured problem-solving
+- 🤖 **Specialized Agent System** - Context-aware agents with token budget management
 - 📋 **Task Management System** - Organized workflows with clear status tracking
 - 🔄 **Orchestration Mode** - Sub-agent delegation for complex projects
 - 🐛 **Root Cause Bug Fixing** - No quick patches, comprehensive solutions
 - 📚 **Context Maintenance** - Automatic documentation and history tracking
+- 💾 **Token Efficiency** - Smart context loading per agent type (20k-150k budgets)
 - ♿ **Accessibility First** - ADHD/Autistic-friendly design patterns
 
 ## Quick Start
 
 ### Installation
 
-1. **Clone into your project:**
+#### Option 1: Automated Installation (Recommended)
+
 ```bash
+# Navigate to your project
 cd your-project
-git clone https://github.com/yourusername/ai-workflow-system .ai-workflow
+
+# Clone and run installer
+git clone https://github.com/aidenestelle/AI-Development-Workflow-System.git .ai-workflow
+cd .ai-workflow
+chmod +x scripts/install.sh
+./scripts/install.sh
+
+# The installer will:
+# ✓ Create docs/ directory
+# ✓ Install all workflow documentation
+# ✓ Initialize TASKS.md, CONTEXT.md, HISTORY.md
+# ✓ Copy .clauderc configuration
+# ✓ Update .gitignore
+# ✓ Create quick reference guide
 ```
 
-2. **Copy documentation templates:**
+#### Option 2: Manual Installation
+
 ```bash
+# Navigate to your project
+cd your-project
+
+# Clone the workflow system
+git clone https://github.com/aidenestelle/AI-Development-Workflow-System.git .ai-workflow
+
+# Create docs directory
 mkdir -p docs
-cp .ai-workflow/docs/*.md docs/
-```
 
-3. **Initialize templates:**
-```bash
-# Create empty working files from templates
+# Copy all documentation
+cp .ai-workflow/docs/AI_RULESET.md docs/
+cp .ai-workflow/docs/PLANNING_MODE.md docs/
+cp .ai-workflow/docs/CONTEXT_UPKEEP_GUIDELINES.md docs/
+cp .ai-workflow/docs/TASKS_GUIDELINES.md docs/
+cp .ai-workflow/docs/TESTING_GUIDELINES.md docs/
+
+# Initialize working files
 touch docs/TASKS.md docs/CONTEXT.md docs/HISTORY.md
+
+# Copy Claude Code configuration
+cp .ai-workflow/.clauderc .
+
+# Optional: Remove installation directory
+rm -rf .ai-workflow
 ```
 
-4. **Configure Claude Code** (if using `.clauderc`):
+#### Option 3: Git Submodule (For Updates)
+
 ```bash
+# Add as submodule
+git submodule add https://github.com/aidenestelle/AI-Development-Workflow-System.git .ai-workflow
+
+# Create symlinks (documentation can be updated by pulling submodule)
+mkdir -p docs
+ln -s ../.ai-workflow/docs/AI_RULESET.md docs/
+ln -s ../.ai-workflow/docs/PLANNING_MODE.md docs/
+ln -s ../.ai-workflow/docs/CONTEXT_UPKEEP_GUIDELINES.md docs/
+ln -s ../.ai-workflow/docs/TASKS_GUIDELINES.md docs/
+ln -s ../.ai-workflow/docs/TESTING_GUIDELINES.md docs/
+
+# Initialize working files
+touch docs/TASKS.md docs/CONTEXT.md docs/HISTORY.md
+
+# Copy config
 cp .ai-workflow/.clauderc .
+
+# Update workflow system later
+git submodule update --remote
 ```
 
 ### Usage
@@ -75,6 +146,18 @@ claude "/do-all"
 
 ## Workflows Explained
 
+### Specialized Agent System
+The workflow uses context-aware specialized agents:
+- **Orchestrator Agent** - Coordinates tasks, minimal context (20-30k tokens)
+- **Planning Agent** - Analyzes problems, creates plans (40-60k tokens)
+- **Implementation Agents** - Frontend, Backend, Full-Stack specialists (80-150k tokens)
+- **Database Agent** - Schema and migrations (50-80k tokens)
+- **Testing Agent** - Quality validation (80-120k tokens)
+- **Refactoring Agent** - Code quality improvements (120-150k tokens)
+- **Documentation Agent** - Context maintenance (30-50k tokens)
+
+Each agent loads ONLY the context needed for their specific role, ensuring efficient token usage.
+
 ### Planning Mode (Automatic)
 - Triggers automatically when bugs/errors reported
 - Prevents rushed implementations
@@ -90,11 +173,16 @@ claude "/do-all"
 
 ### Orchestration Mode
 When using `/do-all`:
-1. Orchestrator spawns Implementation Agent → runs `/start`
-2. Compacts chat for clean context
-3. Orchestrator spawns Validation Agent → runs `/finish`
-4. Compacts chat
-5. Repeats until all tasks complete
+1. Orchestrator reads task queue (minimal context)
+2. Spawns Planning Agent if needed (analyzes problem)
+3. Spawns specialized Implementation Agent (builds solution)
+4. Compacts chat for clean context
+5. Spawns Testing Agent (validates solution)
+6. Compacts chat
+7. Logs token usage in CONTEXT.md
+8. Repeats until all tasks complete
+
+**Token efficiency**: Each agent uses only what they need, typically 20-150k depending on role.
 
 ## File Structure
 
@@ -237,9 +325,7 @@ Contributions welcome! Please:
 
 ## Support
 
-- Issues: [GitHub Issues](https://github.com/yourusername/ai-workflow-system/issues)
-- Discussions: [GitHub Discussions](https://github.com/yourusername/ai-workflow-system/discussions)
-
+- Issues: [GitHub Issues](https://github.com/aidenestelle/AI-Development-Workflow-System.git/issues)
 ---
 
 **Remember:** Slow down to speed up. Planning prevents problems. 🎯

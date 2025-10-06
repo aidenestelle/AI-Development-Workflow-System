@@ -1,7 +1,5 @@
 # AI-Development-Workflow-System
 
-# AI Development Workflow System
-
 A comprehensive, structured workflow system for AI-assisted development with Claude Code. Designed for ADHD/Autistic-friendly UX, preventing "vibe coding", and maintaining high code quality.
 
 ## Features

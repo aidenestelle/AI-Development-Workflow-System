@@ -21,5 +21,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # Optional: Uncomment to ignore working files
-docs/TASKS.md
-docs/CONTEXT.md
+# docs/TASKS.md
+# docs/CONTEXT.md
